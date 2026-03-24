@@ -1,0 +1,6 @@
+[
+  { "id": 1, "name": "Modern Sans", "heading": "Inter, sans-serif", "body": "Inter, sans-serif" },
+  { "id": 2, "name": "Premium Serif", "heading": "Playfair Display, serif", "body": "Lato, sans-serif" },
+  { "id": 3, "name": "Friendly Rounded", "heading": "Poppins, sans-serif", "body": "Open Sans, sans-serif" },
+  { "id": 4, "name": "Clean Geometric", "heading": "Montserrat, sans-serif", "body": "Roboto, sans-serif" }
+]

@@ -1,0 +1,9 @@
+[
+  { "id": 1, "name": "Classic Teal", "primary": "#008080", "secondary": "#F8FAFC", "accent": "#2A9D8F", "text": "#1A202C" },
+  { "id": 2, "name": "Royal Dental Blue", "primary": "#007BFF", "secondary": "#F0F8FF", "accent": "#0056b3", "text": "#1A202C" },
+  { "id": 3, "name": "Modern Mint", "primary": "#3EB489", "secondary": "#EFFFFB", "accent": "#2A7E60", "text": "#2D3748" },
+  { "id": 4, "name": "Midnight Medical", "primary": "#2D3748", "secondary": "#F7FAFC", "accent": "#4A5568", "text": "#1A202C" },
+  { "id": 5, "name": "Soft Rose (Orthodontic)", "primary": "#D53F8C", "secondary": "#FFF5F7", "accent": "#B83280", "text": "#2D3748" },
+  { "id": 6, "name": "Eco-Dental Green", "primary": "#48BB78", "secondary": "#F0FFF4", "accent": "#38A169", "text": "#1A202C" },
+  { "id": 7, "name": "High-Contrast Slate", "primary": "#1A202C", "secondary": "#EDF2F7", "accent": "#2D3748", "text": "#111827" }
+]

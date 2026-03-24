@@ -1,0 +1,100 @@
+This is the "Source of Truth" document for your AI agent. It contains the exact JSON structures, the logic for the URL-to-Style mapping, and the React architecture needed to build the Teacup Dynamic Demo Engine.
+
+Copy and paste this entire block into your coding assistant (Qwen, Cursor, etc.) to generate the codebase.
+
+📑 Technical Spec: Teacup Dynamic Demo Engine (v1)
+1. Global Configuration (The Design DNA)
+These JSON files define the "look and feel" for every generated site.
+
+data/themes.json (7 Color Variations)
+JSON
+[
+  { "id": 1, "name": "Classic Teal", "primary": "#008080", "secondary": "#F8FAFC", "accent": "#2A9D8F", "text": "#1A202C" },
+  { "id": 2, "name": "Royal Dental Blue", "primary": "#007BFF", "secondary": "#F0F8FF", "accent": "#0056b3", "text": "#1A202C" },
+  { "id": 3, "name": "Modern Mint", "primary": "#3EB489", "secondary": "#EFFFFB", "accent": "#2A7E60", "text": "#2D3748" },
+  { "id": 4, "name": "Midnight Medical", "primary": "#2D3748", "secondary": "#F7FAFC", "accent": "#4A5568", "text": "#1A202C" },
+  { "id": 5, "name": "Soft Rose (Orthodontic)", "primary": "#D53F8C", "secondary": "#FFF5F7", "accent": "#B83280", "text": "#2D3748" },
+  { "id": 6, "name": "Eco-Dental Green", "primary": "#48BB78", "secondary": "#F0FFF4", "accent": "#38A169", "text": "#1A202C" },
+  { "id": 7, "name": "High-Contrast Slate", "primary": "#1A202C", "secondary": "#EDF2F7", "accent": "#2D3748", "text": "#111827" }
+]
+data/typographies.json (4 Font Pairings)
+JSON
+[
+  { "id": 1, "name": "Modern Sans", "heading": "Inter, sans-serif", "body": "Inter, sans-serif" },
+  { "id": 2, "name": "Premium Serif", "heading": "Playfair Display, serif", "body": "Lato, sans-serif" },
+  { "id": 3, "name": "Friendly Rounded", "heading": "Poppins, sans-serif", "body": "Open Sans, sans-serif" },
+  { "id": 4, "name": "Clean Geometric", "heading": "Montserrat, sans-serif", "body": "Roboto, sans-serif" }
+]
+data/references.json (Visual Layout Mapping)
+Based on the provided Pinterest references:
+
+JSON
+{
+  "dentists": {
+    "type_1": {
+      "style": "Soft Minimalist",
+      "ref": "https://i.pinimg.com/1200x/f0/74/ad/f074ad93cd8e38f38359024c904a9111.jpg",
+      "layout": ["navbar_floating", "hero_centered", "trust_badges", "services_pill_cards", "footer_simple"]
+    },
+    "type_2": {
+      "style": "High-Contrast Specialist",
+      "ref": "https://i.pinimg.com/1200x/e8/4b/4b/e84b4be3a7d0bda4cea278269b72fc46.jpg",
+      "layout": ["navbar_standard", "hero_split_right", "bento_grid_services", "testimonials", "footer_dark"]
+    },
+    "type_3": {
+      "style": "Clean Healthcare",
+      "ref": "https://i.pinimg.com/736x/63/48/4e/63484e3c589577e23dddc8096f38e232.jpg",
+      "layout": ["navbar_minimal", "hero_warm", "icon_feature_list", "contact_section", "footer_standard"]
+    },
+    "type_4": {
+      "style": "Luxury Aesthetic",
+      "ref": "https://i.pinimg.com/1200x/b6/c3/cb/b6c3cb928e81cdb38e2dd1529a77a965.jpg",
+      "layout": ["navbar_transparent", "hero_full_height", "gallery_grid", "cta_ribbon", "footer_minimal"]
+    }
+  }
+}
+2. Next.js Implementation Logic
+Page Component (app/v1/[niche]/page.tsx)
+The page must parse the search parameters and map them to the JSON data.
+
+TypeScript
+export default function DemoPage({ searchParams, params }) {
+  const { name, 'color-theme': themeId, typography: typoId, type: typeId } = searchParams;
+  const { niche } = params;
+
+  // 1. Find Data
+  const activeTheme = themes.find(t => t.id === Number(themeId)) || themes[0];
+  const activeTypo = typographies.find(t => t.id === Number(typoId)) || typographies[0];
+  const designConfig = references[niche][`type_${typeId}`] || references[niche]["type_1"];
+
+  // 2. Inject CSS Variables
+  const styleVariables = {
+    '--primary': activeTheme.primary,
+    '--secondary': activeTheme.secondary,
+    '--accent': activeTheme.accent,
+    '--text-main': activeTheme.text,
+    '--font-heading': activeTypo.heading,
+    '--font-body': activeTypo.body,
+    '--radius-pill': '9999px',
+    '--radius-card': '1.5rem'
+  } as React.CSSProperties;
+
+  return (
+    <div style={styleVariables} className="font-body text-text-main bg-secondary min-h-screen">
+      {designConfig.layout.map(section => (
+        <DynamicSection key={section} type={section} businessName={name} />
+      ))}
+      <HoldMyTeaWidget businessName={name} />
+    </div>
+  );
+}
+3. Component Styling Rules (Tailwind)
+To match the Pinterest references exactly, the AI agent must apply these classes to every component:
+
+Buttons: bg-[var(--primary)] text-white px-8 py-3 rounded-[var(--radius-pill)] hover:opacity-90 transition-all font-heading
+
+Headings: text-[var(--text-main)] font-[var(--font-heading)] tracking-tight leading-tight
+
+Cards: bg-white border border-slate-100 shadow-sm rounded-[var(--radius-card)] p-8
+
+Hero Sections: Use py-24 lg:py-32 for high white-space "Luxury" feel.
