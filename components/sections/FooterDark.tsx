@@ -1,16 +1,20 @@
-import { FaTooth, FaFacebook, FaInstagram, FaGoogle, FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaGoogle, FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import NicheIcon from "@/components/NicheIcon";
+import { SectionProps } from "@/types";
 
-interface Props { businessName: string }
+export default function FooterDark({ businessName, niche, designType }: SectionProps) {
+  void designType;
 
-export default function FooterDark({ businessName }: Props) {
   return (
     <footer className="bg-slate-900 text-white py-16 px-6">
-      <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-10">
-        <div>
-          <a href="#home" className="flex items-center gap-2 font-bold text-xl mb-4 hover:opacity-80 transition-opacity" style={{ fontFamily: "var(--font-heading)" }}>
-            <FaTooth style={{ color: "var(--primary)" }} />
-            {businessName}
-          </a>
+      <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
+        <div className="col-span-2 md:col-span-1">
+          <div className="flex items-center gap-2 mb-6">
+            <NicheIcon niche={niche} className="text-2xl text-white" />
+            <span className="text-xl font-bold tracking-tight" style={{ fontFamily: "var(--font-heading)" }}>
+              {businessName}
+            </span>
+          </div>
           <p className="text-slate-400 text-sm leading-relaxed mb-6">
             Delivering expert dental care with compassion and cutting-edge technology.
           </p>

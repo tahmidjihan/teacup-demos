@@ -1,32 +1,41 @@
-interface Props { businessName: string }
+import React from "react";
+import images from "@/data/images.json";
+import { ImagesData } from "@/types";
 
-export default function HeroWarm({ businessName }: Props) {
+interface Props { businessName: string; niche: string }
+
+export default function HeroWarm({ businessName, niche }: Props) {
+  const imagesTyped = images as ImagesData;
+  const nicheImages = imagesTyped[niche]?.hero || imagesTyped.dentists.hero;
+  const heroImage = nicheImages.warm;
+  const doctorImage = imagesTyped[niche]?.doctor || imagesTyped.dentists.doctor;
+
   return (
-    <section id="home" className="py-24 lg:py-32 px-6 overflow-hidden" style={{ backgroundColor: "var(--secondary)" }}>
+    <section id="home" className="py-24 lg:py-36 px-6" style={{ backgroundColor: "var(--secondary)" }}>
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-        <div className="anim-slide-left">
-          <h1 className="text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6" style={{ color: "var(--text-main)", fontFamily: "var(--font-heading)" }}>
-            Healthy Smiles for the Whole Family
+        <div className="anim-fade-right">
+          <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight" style={{ color: "var(--text-main)", fontFamily: "var(--font-heading)" }}>
+            A Warmer Way to <span style={{ color: "var(--primary)" }}>Smile.</span>
           </h1>
-          <p className="text-xl text-slate-500 mb-10 leading-relaxed">
-            {businessName} is your trusted neighbourhood dental home. We make every visit comfortable, gentle, and rewarding.
+          <p className="text-lg text-slate-500 mb-10 leading-relaxed max-w-lg">
+            At {businessName}, we&apos;ve designed our practice to feel like home. Relaxed, gentle, and entirely focused on you.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <a href="#contact" className="text-white px-8 py-3 font-semibold hover:opacity-90 transition-all hover:shadow-lg text-center" style={{ backgroundColor: "var(--primary)", borderRadius: "var(--radius-pill)" }}>
-              Request Appointment
-            </a>
-            <a href="#about" className="px-8 py-3 font-semibold text-slate-600 hover:text-slate-900 transition-all underline underline-offset-4 text-center">
-              Learn About Us
+          <div className="flex gap-4">
+            <a href="#contact" className="text-white px-8 py-4 font-bold transition-all hover:scale-105" style={{ backgroundColor: "var(--primary)", borderRadius: "var(--radius-pill)" }}>
+              Meet Our Team
             </a>
           </div>
         </div>
-        <div className="anim-slide-right">
-          <div className="relative rounded-card overflow-hidden shadow-2xl" style={{ borderRadius: "var(--radius-card)" }}>
+        <div className="anim-fade-left relative">
+          <div className="relative z-10 rounded-card overflow-hidden shadow-xl border-8 border-white" style={{ borderRadius: "var(--radius-card)" }}>
             <img
-              src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80"
-              alt="Friendly dental team"
-              className="w-full h-80 lg:h-[420px] object-cover"
+              src={heroImage}
+              alt="Comfortable office"
+              className="w-full h-[450px] object-cover"
             />
+          </div>
+          <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-full border-4 border-white shadow-lg overflow-hidden z-20 anim-float">
+            <img src={doctorImage} alt="Doctor" className="w-full h-full object-cover" />
           </div>
         </div>
       </div>

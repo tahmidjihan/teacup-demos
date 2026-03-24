@@ -1,6 +1,13 @@
-interface Props { businessName: string }
+import images from "@/data/images.json";
+import { ImagesData, SectionProps } from "@/types";
 
-export default function HeroCentered({ businessName }: Props) {
+export default function HeroCentered({ businessName, niche, designType }: SectionProps) {
+  const imagesTyped = images as ImagesData;
+  const nicheImages = imagesTyped[niche]?.hero || imagesTyped.dentists.hero;
+  
+  // Use designType to pick a slightly different hero if needed
+  const heroImage = designType === "1" ? nicheImages.centered : nicheImages.split;
+
   return (
     <section id="home" className="relative overflow-hidden py-24 lg:py-36 text-center px-6" style={{ backgroundColor: "var(--secondary)" }}>
       <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ background: "radial-gradient(ellipse at 60% 40%, var(--primary) 0%, transparent 70%)" }} />
@@ -15,17 +22,17 @@ export default function HeroCentered({ businessName }: Props) {
           At {businessName}, we combine gentle care with modern dentistry to give you the healthy, beautiful smile you deserve.
         </p>
         <div className="anim-fade-up anim-delay-300 flex flex-col sm:flex-row gap-4 justify-center mb-16">
-          <a href="#contact" className="text-white px-8 py-3 font-semibold hover:opacity-90 transition-all hover:shadow-lg hover:-translate-y-0.5" style={{ backgroundColor: "var(--primary)", borderRadius: "var(--radius-pill)" }}>
+          <a href="#contact" className="text-white px-8 py-3 font-semibold hover:opacity-90 transition-all hover:shadow-lg hover:-translate-y-0.5 anim-bounce-in anim-delay-400" style={{ backgroundColor: "var(--primary)", borderRadius: "var(--radius-pill)" }}>
             Book an Appointment
           </a>
-          <a href="#services" className="px-8 py-3 font-semibold border-2 hover:opacity-80 transition-all" style={{ borderColor: "var(--primary)", color: "var(--primary)", borderRadius: "var(--radius-pill)" }}>
+          <a href="#services" className="px-8 py-3 font-semibold border-2 hover:opacity-80 transition-all anim-bounce-in anim-delay-500" style={{ borderColor: "var(--primary)", color: "var(--primary)", borderRadius: "var(--radius-pill)" }}>
             Our Services
           </a>
         </div>
-        <div className="anim-scale-in anim-delay-400 relative rounded-card overflow-hidden shadow-2xl" style={{ borderRadius: "var(--radius-card)" }}>
+        <div className="anim-zoom-in anim-delay-600 relative rounded-card overflow-hidden shadow-2xl" style={{ borderRadius: "var(--radius-card)" }}>
           <img
-            src="https://images.unsplash.com/photo-1606811841689-23dfddce3e4c?auto=format&fit=crop&w=1200&q=80"
-            alt="Bright modern dental practice"
+            src={heroImage}
+            alt="Bright modern practice"
             className="w-full h-72 lg:h-96 object-cover"
           />
           <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.2) 0%, transparent 50%)" }} />

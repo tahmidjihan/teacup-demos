@@ -1,8 +1,10 @@
+import type { CSSProperties } from "react";
 import themes from "@/data/themes.json";
 import typographies from "@/data/typographies.json";
 import references from "@/data/references.json";
 import DynamicSection from "@/components/DynamicSection";
 import HoldMyTeaWidget from "@/components/HoldMyTeaWidget";
+import type { Metadata } from "next";
 
 interface PageProps {
   params: Promise<{ niche: string }>;
@@ -12,6 +14,17 @@ interface PageProps {
     typography?: string;
     type?: string;
   }>;
+}
+
+export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
+  const sp = await searchParams;
+  const { niche } = await params;
+  const name = sp.name || "Your Business";
+  const formattedNiche = niche.charAt(0).toUpperCase() + niche.slice(1);
+  return {
+    title: `${name} | Professional ${formattedNiche} Website`,
+    description: `Experience the best ${niche} services at ${name}. A custom demo powered by Teacup.`,
+  };
 }
 
 export default async function DemoPage({ params, searchParams }: PageProps) {
@@ -44,12 +57,12 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
     fontFamily: "var(--font-body)",
     color: "var(--text-main)",
     backgroundColor: "var(--secondary)",
-  } as React.CSSProperties;
+  } as CSSProperties;
 
   return (
     <div style={styleVariables} className="min-h-screen">
       {designConfig.layout.map((section: string) => (
-        <DynamicSection key={section} type={section} businessName={name} />
+        <DynamicSection key={section} type={section} businessName={name} niche={niche} designType={typeId} />
       ))}
       <HoldMyTeaWidget businessName={name} />
     </div>

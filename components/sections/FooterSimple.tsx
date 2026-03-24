@@ -1,15 +1,19 @@
-import { FaTooth, FaFacebook, FaInstagram, FaGoogle } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaGoogle } from "react-icons/fa";
+import NicheIcon from "@/components/NicheIcon";
+import { SectionProps } from "@/types";
 
-interface Props { businessName: string }
+export default function FooterSimple({ businessName, niche, designType }: SectionProps) {
+  void designType;
 
-export default function FooterSimple({ businessName }: Props) {
   return (
-    <footer className="border-t border-slate-100 py-10 px-6" style={{ backgroundColor: "var(--secondary)" }}>
-      <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-        <a href="#home" className="flex items-center gap-2 font-bold text-lg hover:opacity-80 transition-opacity" style={{ color: "var(--primary)", fontFamily: "var(--font-heading)" }}>
-          <FaTooth />
-          {businessName}
-        </a>
+    <footer className="py-12 px-6 border-t border-slate-100">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="flex items-center gap-2">
+          <NicheIcon niche={niche} className="text-xl" style={{ color: "var(--primary)" }} />
+          <span className="font-bold text-lg tracking-tight" style={{ color: "var(--text-main)", fontFamily: "var(--font-heading)" }}>
+            {businessName}
+          </span>
+        </div>
         <p className="text-sm text-slate-400">© {new Date().getFullYear()} {businessName}. All rights reserved.</p>
         <div className="flex items-center gap-4">
           {[FaFacebook, FaInstagram, FaGoogle].map((Icon, i) => (

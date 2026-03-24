@@ -1,32 +1,39 @@
+import React from "react";
 import { FaStar, FaQuoteLeft } from "react-icons/fa";
+import images from "@/data/images.json";
+import { ImagesData, SectionProps } from "@/types";
 
-interface Props { businessName: string }
+export default function Testimonials({ businessName, niche, designType }: SectionProps) {
+  const imagesTyped = images as ImagesData;
+  const nicheAvatars = imagesTyped[niche]?.avatars || imagesTyped.dentists.avatars;
+  
+  // Dynamic shuffle based on designType
+  const displayAvatars = designType === "2" ? [...nicheAvatars].reverse() : nicheAvatars;
 
-const reviews = [
-  {
-    name: "Sarah M.",
-    role: "Patient since 2021",
-    text: "Absolutely incredible experience. The team made me feel at ease from the moment I walked in.",
-    stars: 5,
-    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&w=100&q=80",
-  },
-  {
-    name: "James T.",
-    role: "Patient since 2020",
-    text: "Best dental practice I've ever been to. Professional, thorough, and genuinely caring staff.",
-    stars: 5,
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80",
-  },
-  {
-    name: "Rachel K.",
-    role: "Patient since 2022",
-    text: "My smile transformation was beyond what I imagined. I can't stop smiling now — truly life-changing!",
-    stars: 5,
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&q=80",
-  },
-];
+  const reviews = [
+    {
+      name: "Sarah M.",
+      role: "Patient since 2021",
+      text: "Absolutely incredible experience. The team made me feel at ease from the moment I walked in.",
+      stars: 5,
+      avatar: displayAvatars[0],
+    },
+    {
+      name: "James T.",
+      role: "Patient since 2020",
+      text: "Best dental practice I&apos;ve ever been to. Professional, thorough, and genuinely caring staff.",
+      stars: 5,
+      avatar: displayAvatars[1],
+    },
+    {
+      name: "Rachel K.",
+      role: "Patient since 2022",
+      text: "My smile transformation was beyond what I imagined. I can&apos;t stop smiling now — truly life-changing!",
+      stars: 5,
+      avatar: displayAvatars[2],
+    },
+  ];
 
-export default function Testimonials({ businessName }: Props) {
   void businessName;
   return (
     <section id="about" className="py-24 px-6" style={{ backgroundColor: "var(--secondary)" }}>
@@ -49,7 +56,7 @@ export default function Testimonials({ businessName }: Props) {
                   <FaStar key={j} className="text-amber-400 text-sm" />
                 ))}
               </div>
-              <p className="text-slate-600 text-sm leading-relaxed flex-1 mb-6">"{r.text}"</p>
+              <p className="text-slate-600 text-sm leading-relaxed flex-1 mb-6">&quot;{r.text}&quot;</p>
               <div className="flex items-center gap-3">
                 <img src={r.avatar} alt={r.name} className="w-10 h-10 rounded-full object-cover" />
                 <div>

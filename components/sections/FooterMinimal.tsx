@@ -1,15 +1,18 @@
-import { FaTooth } from "react-icons/fa";
+import NicheIcon from "@/components/NicheIcon";
+import { SectionProps } from "@/types";
 
-interface Props { businessName: string }
+export default function FooterMinimal({ businessName, niche, designType }: SectionProps) {
+  void designType;
 
-export default function FooterMinimal({ businessName }: Props) {
   return (
-    <footer className="py-10 px-6 border-t border-white/10" style={{ backgroundColor: "var(--secondary)" }}>
-      <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-        <a href="#home" className="flex items-center gap-2 text-sm font-semibold hover:opacity-70 transition-opacity" style={{ color: "var(--primary)" }}>
-          <FaTooth />
-          {businessName}
-        </a>
+    <footer className="py-12 px-6 border-t border-slate-100">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="flex items-center gap-2">
+          <NicheIcon niche={niche} className="text-xl" style={{ color: "var(--primary)" }} />
+          <span className="font-bold text-lg tracking-tight" style={{ color: "var(--text-main)", fontFamily: "var(--font-heading)" }}>
+            {businessName}
+          </span>
+        </div>
         <p className="text-sm text-slate-400">© {new Date().getFullYear()} {businessName}. All rights reserved.</p>
         <div className="flex gap-5 text-sm text-slate-400">
           <a href="#home"     className="hover:text-slate-600 transition-colors">Home</a>

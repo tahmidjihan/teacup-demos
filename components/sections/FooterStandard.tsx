@@ -1,16 +1,18 @@
-import { FaTooth, FaFacebook, FaInstagram, FaGoogle } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaGoogle } from "react-icons/fa";
+import NicheIcon from "@/components/NicheIcon";
+import { SectionProps } from "@/types";
 
-interface Props { businessName: string }
+export default function FooterStandard({ businessName, niche, designType }: SectionProps) {
+  void designType;
 
-export default function FooterStandard({ businessName }: Props) {
   return (
     <footer className="border-t border-slate-200 py-12 px-6" style={{ backgroundColor: "var(--secondary)" }}>
       <div className="max-w-5xl mx-auto grid md:grid-cols-4 gap-8">
         <div className="md:col-span-2">
-          <a href="#home" className="flex items-center gap-2 font-bold text-xl mb-3 hover:opacity-80 transition-opacity" style={{ color: "var(--primary)", fontFamily: "var(--font-heading)" }}>
-            <FaTooth />
+          <div className="flex items-center gap-2 font-bold text-xl mb-3" style={{ color: "var(--primary)", fontFamily: "var(--font-heading)" }}>
+            <NicheIcon niche={niche} className="text-2xl" />
             {businessName}
-          </a>
+          </div>
           <p className="text-slate-500 text-sm leading-relaxed max-w-xs mb-5">
             Your trusted dental home for the whole family. Modern care, warm hearts.
           </p>

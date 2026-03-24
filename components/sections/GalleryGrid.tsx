@@ -1,34 +1,42 @@
-interface Props { businessName: string }
+import React from "react";
+import images from "@/data/images.json";
+import { ImagesData, SectionProps } from "@/types";
 
-const items = [
-  {
-    label: "Smile Makeover",
-    img: "https://images.unsplash.com/photo-1606811841689-23dfddce3e4c?auto=format&fit=crop&w=600&q=80",
-    span: "col-span-2 lg:col-span-1 row-span-2",
-  },
-  {
-    label: "Veneers",
-    img: "https://images.unsplash.com/photo-1588776814546-1ffbb172e367?auto=format&fit=crop&w=600&q=80",
-    span: "",
-  },
-  {
-    label: "Whitening",
-    img: "https://images.unsplash.com/photo-1526243741027-444d633d7365?auto=format&fit=crop&w=600&q=80",
-    span: "",
-  },
-  {
-    label: "Implants",
-    img: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=600&q=80",
-    span: "",
-  },
-  {
-    label: "Full Restoration",
-    img: "https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?auto=format&fit=crop&w=600&q=80",
-    span: "",
-  },
-];
+export default function GalleryGrid({ businessName, niche, designType }: SectionProps) {
+  const imagesTyped = images as ImagesData;
+  const nicheImages = imagesTyped[niche]?.gallery || imagesTyped.dentists.gallery;
+  
+  // Use designType to reverse or offset gallery items for variety
+  const displayImages = designType === "4" ? [...nicheImages].reverse() : nicheImages;
+  
+  const items = [
+    {
+      label: "Smile Makeover",
+      img: displayImages[0],
+      span: "col-span-2 lg:col-span-1 row-span-2",
+    },
+    {
+      label: "Veneers",
+      img: displayImages[1],
+      span: "",
+    },
+    {
+      label: "Whitening",
+      img: displayImages[2],
+      span: "",
+    },
+    {
+      label: "Implants",
+      img: displayImages[3],
+      span: "",
+    },
+    {
+      label: "Full Restoration",
+      img: displayImages[4],
+      span: "",
+    },
+  ];
 
-export default function GalleryGrid({ businessName }: Props) {
   void businessName;
   return (
     <section id="gallery" className="py-24 px-6" style={{ backgroundColor: "var(--secondary)" }}>
@@ -42,7 +50,7 @@ export default function GalleryGrid({ businessName }: Props) {
           {items.map((item, i) => (
             <div
               key={item.label}
-              className={`${item.span} relative overflow-hidden group anim-scale-in anim-delay-${Math.min((i + 1) * 100, 500)}`}
+              className={`${item.span} relative overflow-hidden group anim-zoom-in anim-delay-${Math.min((i + 1) * 100, 500)}`}
               style={{ borderRadius: "var(--radius-card)" }}
             >
               <img

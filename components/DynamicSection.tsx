@@ -1,3 +1,5 @@
+import type { ComponentType } from "react";
+import { SectionProps } from "@/types";
 import NavbarFloating from "./sections/NavbarFloating";
 import NavbarStandard from "./sections/NavbarStandard";
 import NavbarMinimal from "./sections/NavbarMinimal";
@@ -18,13 +20,20 @@ import FooterSimple from "./sections/FooterSimple";
 import FooterDark from "./sections/FooterDark";
 import FooterStandard from "./sections/FooterStandard";
 import FooterMinimal from "./sections/FooterMinimal";
+import TeamSection from "./sections/TeamSection";
+import FaqSection from "./sections/FaqSection";
+import InsuranceSection from "./sections/InsuranceSection";
+import ProcessSection from "./sections/ProcessSection";
+import WhyChooseUsSection from "./sections/WhyChooseUsSection";
 
 interface Props {
   type: string;
   businessName: string;
+  niche: string;
+  designType: string;
 }
 
-const sectionMap: Record<string, React.ComponentType<{ businessName: string }>> = {
+const sectionMap: Record<string, ComponentType<SectionProps>> = {
   navbar_floating: NavbarFloating,
   navbar_standard: NavbarStandard,
   navbar_minimal: NavbarMinimal,
@@ -45,10 +54,15 @@ const sectionMap: Record<string, React.ComponentType<{ businessName: string }>> 
   footer_dark: FooterDark,
   footer_standard: FooterStandard,
   footer_minimal: FooterMinimal,
+  team_section: TeamSection,
+  faq_section: FaqSection,
+  insurance_section: InsuranceSection,
+  process_section: ProcessSection,
+  why_choose_us: WhyChooseUsSection,
 };
 
-export default function DynamicSection({ type, businessName }: Props) {
+export default function DynamicSection({ type, businessName, niche, designType }: Props) {
   const Component = sectionMap[type];
   if (!Component) return null;
-  return <Component businessName={businessName} />;
+  return <Component businessName={businessName} niche={niche} designType={designType} />;
 }

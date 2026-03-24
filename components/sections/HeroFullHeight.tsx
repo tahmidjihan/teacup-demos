@@ -1,30 +1,35 @@
-interface Props { businessName: string }
+import React from "react";
+import images from "@/data/images.json";
+import { ImagesData, SectionProps } from "@/types";
 
-export default function HeroFullHeight({ businessName }: Props) {
+export default function HeroFullHeight({ businessName, niche, designType }: SectionProps) {
+  const imagesTyped = images as ImagesData;
+  const nicheImages = imagesTyped[niche]?.hero || imagesTyped.dentists.hero;
+  
+  // Dynamic image based on designType
+  const heroImage = designType === "4" ? nicheImages.full : nicheImages.centered;
+
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
+    <section id="home" className="relative h-[90vh] flex items-center justify-center text-center px-6 overflow-hidden">
       <img
-        src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1600&q=80"
-        alt="Luxury dental studio"
-        className="absolute inset-0 w-full h-full object-cover"
+        src={heroImage}
+        alt="Hero background"
+        className="absolute inset-0 w-full h-full object-cover anim-zoom-out"
       />
-      <div className="absolute inset-0" style={{ background: "linear-gradient(145deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 100%)" }} />
-      <div className="relative z-10 text-center text-white max-w-3xl mx-auto pt-20">
-        <p className="anim-fade-in text-sm font-semibold uppercase tracking-widest mb-6 text-white/70">
-          Luxury Dental Experience
-        </p>
-        <h1 className="anim-fade-up anim-delay-100 text-5xl lg:text-7xl font-bold leading-tight tracking-tight mb-8" style={{ fontFamily: "var(--font-heading)" }}>
-          Redefining Your Smile
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
+      <div className="relative z-10 max-w-4xl mx-auto">
+        <span className="anim-fade-in inline-block text-white text-sm font-bold uppercase tracking-[0.3em] mb-6 border-b border-white/30 pb-2">
+          {businessName}
+        </span>
+        <h1 className="anim-fade-up anim-delay-100 text-6xl lg:text-8xl font-bold text-white mb-8 tracking-tighter" style={{ fontFamily: "var(--font-heading)" }}>
+          The Future of <br /> Dentistry.
         </h1>
-        <p className="anim-fade-up anim-delay-200 text-xl text-white/80 mb-12 leading-relaxed max-w-xl mx-auto">
-          {businessName} blends artistry with precision dentistry to craft smiles that are truly extraordinary.
+        <p className="anim-fade-up anim-delay-200 text-xl text-white/80 mb-12 max-w-2xl mx-auto font-light leading-relaxed">
+          Bespoke dental care tailored to your unique smile. Discover the perfect blend of technology and artistry.
         </p>
-        <div className="anim-fade-up anim-delay-300 flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#contact" className="bg-white font-semibold px-10 py-4 hover:shadow-xl transition-all text-lg hover:-translate-y-0.5" style={{ color: "var(--primary)", borderRadius: "var(--radius-pill)" }}>
-            Begin Your Journey
-          </a>
-          <a href="#gallery" className="border border-white/60 text-white font-semibold px-10 py-4 hover:bg-white/10 transition-all text-lg" style={{ borderRadius: "var(--radius-pill)" }}>
-            View Gallery
+        <div className="anim-fade-up anim-delay-300 flex flex-col sm:flex-row gap-6 justify-center">
+          <a href="#contact" className="bg-white text-black px-12 py-4 font-bold hover:bg-opacity-90 transition-all hover:scale-105" style={{ borderRadius: "var(--radius-pill)" }}>
+            Book Your Consult
           </a>
         </div>
       </div>

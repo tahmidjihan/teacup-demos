@@ -1,0 +1,59 @@
+{
+  "dentists": {
+    "hero": {
+      "centered": "https://images.unsplash.com/photo-1489278353717-f64c6ee8a4d2?auto=format&fit=crop&w=1200&q=80",
+      "split": "https://images.unsplash.com/photo-1564420228450-d9a5bc8d6565?auto=format&fit=crop&w=1200&q=80",
+      "warm": "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80",
+      "full": "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1600&q=80"
+    },
+    "services": [
+      {
+        "title": "Teeth Cleaning",
+        "image": "https://images.unsplash.com/photo-1593054981440-59bbad44955b?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        "title": "Dental Implants",
+        "image": "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        "title": "Teeth Whitening",
+        "image": "https://images.unsplash.com/photo-1526243741027-444d633d7365?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        "title": "Orthodontics",
+        "image": "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        "title": "Gum Treatment",
+        "image": "https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        "title": "Sedation Dentistry",
+        "image": "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=600&q=80"
+      }
+    ],
+    "gallery": [
+      "https://images.unsplash.com/photo-1660732205502-2c4dcd3af74d?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1720685193964-4529228a33c1?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1526243741027-444d633d7365?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?auto=format&fit=crop&w=600&q=80"
+    ],
+    "avatars": [
+      "https://images.unsplash.com/photo-1590086782957-93c06ef21604?auto=format&fit=crop&w=100&q=80",
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80",
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&q=80"
+    ],
+    "contact": "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=800&q=80",
+    "team": [
+      "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=300&q=80",
+      "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=300&q=80",
+      "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=300&q=80"
+    ],
+    "faq": "https://images.unsplash.com/photo-1667133295308-9ef24f71952e?auto=format&fit=crop&w=800&q=80",
+    "insurance": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80",
+    "doctor": "https://images.unsplash.com/photo-1559839734-2b71f1536783?auto=format&fit=crop&w=200&q=80",
+    "logo": "https://images.unsplash.com/photo-1631549448353-53e209948416?auto=format&fit=crop&w=100&q=80",
+    "cta": "https://images.unsplash.com/photo-1516549221187-df70a2782363?auto=format&fit=crop&w=1200&q=80"
+  }
+}

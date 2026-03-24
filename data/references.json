@@ -3,22 +3,22 @@
     "type_1": {
       "style": "Soft Minimalist",
       "ref": "https://i.pinimg.com/1200x/f0/74/ad/f074ad93cd8e38f38359024c904a9111.jpg",
-      "layout": ["navbar_floating", "hero_centered", "trust_badges", "services_pill_cards", "footer_simple"]
+      "layout": ["navbar_floating", "hero_centered", "trust_badges", "services_pill_cards", "process_section", "team_section", "insurance_section", "faq_section", "footer_simple"]
     },
     "type_2": {
       "style": "High-Contrast Specialist",
       "ref": "https://i.pinimg.com/1200x/e8/4b/4b/e84b4be3a7d0bda4cea278269b72fc46.jpg",
-      "layout": ["navbar_standard", "hero_split_right", "bento_grid_services", "testimonials", "footer_dark"]
+      "layout": ["navbar_standard", "hero_split_right", "bento_grid_services", "why_choose_us", "testimonials", "insurance_section", "team_section", "faq_section", "footer_dark"]
     },
     "type_3": {
       "style": "Clean Healthcare",
       "ref": "https://i.pinimg.com/736x/63/48/4e/63484e3c589577e23dddc8096f38e232.jpg",
-      "layout": ["navbar_minimal", "hero_warm", "icon_feature_list", "contact_section", "footer_standard"]
+      "layout": ["navbar_minimal", "hero_warm", "icon_feature_list", "process_section", "team_section", "contact_section", "faq_section", "footer_standard"]
     },
     "type_4": {
       "style": "Luxury Aesthetic",
       "ref": "https://i.pinimg.com/1200x/b6/c3/cb/b6c3cb928e81cdb38e2dd1529a77a965.jpg",
-      "layout": ["navbar_transparent", "hero_full_height", "gallery_grid", "cta_ribbon", "footer_minimal"]
+      "layout": ["navbar_transparent", "hero_full_height", "gallery_grid", "why_choose_us", "insurance_section", "team_section", "cta_ribbon", "footer_minimal"]
     }
   }
 }
