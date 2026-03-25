@@ -1,55 +1,68 @@
 import Link from "next/link";
 
-export default function Home() {
-  const demoLinks = [
-    {
-      label: "Soft Minimalist — Classic Teal",
-      href: "/v1/dentists?name=Bright+Smile+Dental&color-theme=1&typography=1&type=1",
-    },
-    {
-      label: "High-Contrast Specialist — Royal Blue",
-      href: "/v1/dentists?name=Premier+Dental+Care&color-theme=2&typography=4&type=2",
-    },
-    {
-      label: "Clean Healthcare — Modern Mint",
-      href: "/v1/dentists?name=Greenfield+Dental&color-theme=3&typography=3&type=3",
-    },
-    {
-      label: "Luxury Aesthetic — Soft Rose",
-      href: "/v1/dentists?name=Elite+Orthodontics&color-theme=5&typography=2&type=4",
-    },
-  ];
+const niches = ["dentists", "barbers", "cafes", "construction", "medical", "restaurants"];
+const themes = [1, 2, 3, 4, 5, 6];
+const typos = [1, 2, 3];
+const types = [1, 2, 3, 4];
 
+export default function HomePage() {
   return (
-    <main className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-12">
-      <div className="max-w-2xl w-full text-center">
-        <h1 className="text-4xl font-bold text-slate-800 mb-3">
-          Teacup Demo Engine
-        </h1>
-        <p className="text-slate-500 mb-10 text-lg">
-          Dynamic dental website previews. Choose a demo below or build your
-          own URL.
-        </p>
+    <main className="min-h-screen bg-slate-50 text-slate-800 p-8 lg:p-16">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-4xl font-bold text-slate-900 mb-4 font-sans">Teacup Demo Links</h1>
+        <p className="text-slate-500 mb-10">Use these links to test the dynamic capabilities of the generated site.</p>
 
-        <div className="grid gap-4">
-          {demoLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="block bg-white border border-slate-200 rounded-2xl px-6 py-5 text-left hover:shadow-md hover:border-slate-300 transition-all"
-            >
-              <span className="font-semibold text-slate-700">{link.label}</span>
+        <div className="space-y-12">
+          <div>
+            <h2 className="text-2xl font-bold text-slate-800 mb-4 border-b pb-2">Niche Demos</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+              {niches.map(niche => (
+                <Link key={niche} href={`/v1/${niche}?name=${niche.charAt(0).toUpperCase() + niche.slice(1)}%20Inc.`} className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow text-center font-semibold hover:text-indigo-600">
+                  {niche.charAt(0).toUpperCase() + niche.slice(1)}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-bold text-slate-800 mb-4 border-b pb-2">Layout Types (for Dentists)</h2>
+            <div className="flex flex-wrap gap-4">
+              {types.map(type => (
+                <Link key={type} href={`/v1/dentists?name=Smile%20Bright&type=${type}`} className="bg-white px-5 py-2 rounded-full shadow-sm hover:shadow-md transition-shadow font-semibold hover:text-indigo-600">
+                  Layout {type}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-bold text-slate-800 mb-4 border-b pb-2">Color Themes (for Dentists)</h2>
+            <div className="flex flex-wrap gap-4">
+              {themes.map(theme => (
+                <Link key={theme} href={`/v1/dentists?name=Smile%20Bright&color-theme=${theme}`} className="bg-white px-5 py-2 rounded-full shadow-sm hover:shadow-md transition-shadow font-semibold hover:text-indigo-600">
+                  Theme {theme}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-bold text-slate-800 mb-4 border-b pb-2">Typography (for Dentists)</h2>
+            <div className="flex flex-wrap gap-4">
+              {typos.map(typo => (
+                <Link key={typo} href={`/v1/dentists?name=Smile%20Bright&typography=${typo}`} className="bg-white px-5 py-2 rounded-full shadow-sm hover:shadow-md transition-shadow font-semibold hover:text-indigo-600">
+                  Typography {typo}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-bold text-slate-800 mb-4 border-b pb-2">Full Customization Example</h2>
+            <Link href="/v1/construction?name=BuildRight%20Construction&color-theme=5&typography=2&type=4" className="inline-block bg-indigo-600 text-white px-8 py-4 rounded-lg shadow-lg hover:bg-indigo-700 transition-colors font-bold">
+              Construction Co. (Luxury Layout)
             </Link>
-          ))}
-        </div>
-
-        <div className="mt-12 bg-white border border-slate-200 rounded-2xl p-6 text-left">
-          <p className="text-sm font-semibold text-slate-500 mb-2 uppercase tracking-wide">
-            URL Structure
-          </p>
-          <code className="text-sm text-slate-700 break-all">
-            /v1/dentists?name=&lt;Business+Name&gt;&amp;color-theme=&lt;1-7&gt;&amp;typography=&lt;1-4&gt;&amp;type=&lt;1-4&gt;
-          </code>
+          </div>
         </div>
       </div>
     </main>

@@ -5,9 +5,10 @@ import { ImagesData, SectionProps } from "@/types";
 
 export default function IconFeatureList({ businessName, niche, designType }: SectionProps) {
   const imagesTyped = images as ImagesData;
+  const nicheData = imagesTyped[niche] || imagesTyped.dentists;
   
   // Choose image based on designType
-  const nicheImage = designType === "3" ? imagesTyped[niche]?.hero?.warm : imagesTyped[niche]?.hero?.centered;
+  const nicheImage = designType === "3" ? nicheData.hero.warm : nicheData.hero.centered;
 
   return (
     <section id="features" className="py-24 px-6" style={{ backgroundColor: "var(--secondary)" }}>

@@ -14,7 +14,6 @@ export default function TeamSection({ businessName, niche, designType }: Section
   
   // Dynamic offset based on designType
   const offset = Number(designType) % 2 === 0 ? 0 : 1;
-  const displayImages = teamImages.slice(offset, offset + 3);
 
   return (
     <section id="team" className="py-24 px-6" style={{ backgroundColor: "var(--secondary)" }}>
@@ -32,7 +31,7 @@ export default function TeamSection({ businessName, niche, designType }: Section
           {teamMembers.map((member, i) => (
             <div key={member.name} className={`anim-scale-in anim-delay-${(i + 1) * 200} group bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500`} style={{ borderRadius: "var(--radius-card)" }}>
               <div className="relative h-80 overflow-hidden" style={{ borderRadius: "var(--radius-card) var(--radius-card) 0 0" }}>
-                <img src={displayImages[i]} alt={member.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <img src={teamImages[(i + offset) % teamImages.length]} alt={member.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
                   <p className="text-white text-sm italic">&quot;{member.bio}&quot;</p>
                 </div>

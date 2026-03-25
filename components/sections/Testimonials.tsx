@@ -35,6 +35,8 @@ export default function Testimonials({ businessName, niche, designType }: Sectio
   ];
 
   void businessName;
+  const isType3 = designType === "3";
+
   return (
     <section id="about" className="py-24 px-6" style={{ backgroundColor: "var(--secondary)" }}>
       <div className="max-w-5xl mx-auto">
@@ -43,11 +45,11 @@ export default function Testimonials({ businessName, niche, designType }: Sectio
           What Our Patients Say
         </h2>
         <p className="anim-fade-up anim-delay-100 text-center text-slate-500 mb-14">Over 500 five-star reviews and counting.</p>
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className={`grid gap-6 ${isType3 ? "md:grid-cols-2" : "md:grid-cols-3"}`}>
           {reviews.map((r, i) => (
             <div
               key={r.name}
-              className={`anim-fade-up anim-delay-${(i + 1) * 100} bg-white border border-slate-100 shadow-sm p-8 flex flex-col hover:shadow-md transition-shadow`}
+              className={`anim-fade-up anim-delay-${(i + 1) * 100} bg-white border border-slate-100 shadow-sm p-8 flex flex-col hover:shadow-md transition-shadow ${isType3 && i === 2 ? "md:col-span-2" : ""}`}
               style={{ borderRadius: "var(--radius-card)" }}
             >
               <FaQuoteLeft className="text-2xl mb-4 opacity-20" style={{ color: "var(--primary)" }} />

@@ -1,14 +1,13 @@
 import React from "react";
 import images from "@/data/images.json";
-import { ImagesData } from "@/types";
+import { ImagesData, SectionProps } from "@/types";
 
-interface Props { businessName: string; niche: string }
-
-export default function HeroWarm({ businessName, niche }: Props) {
+export default function HeroWarm({ businessName, niche, designType }: SectionProps) {
   const imagesTyped = images as ImagesData;
   const nicheImages = imagesTyped[niche]?.hero || imagesTyped.dentists.hero;
   const heroImage = nicheImages.warm;
   const doctorImage = imagesTyped[niche]?.doctor || imagesTyped.dentists.doctor;
+  void designType;
 
   return (
     <section id="home" className="py-24 lg:py-36 px-6" style={{ backgroundColor: "var(--secondary)" }}>

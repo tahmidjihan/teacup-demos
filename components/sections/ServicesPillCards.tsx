@@ -22,6 +22,8 @@ export default function ServicesPillCards({ businessName, niche, designType }: S
   ];
 
   void businessName;
+  const isType3 = designType === "3";
+
   return (
     <section id="services" className="py-24 px-6" style={{ backgroundColor: "var(--secondary)" }}>
       <div className="max-w-5xl mx-auto">
@@ -30,23 +32,28 @@ export default function ServicesPillCards({ businessName, niche, designType }: S
           Our Services
         </h2>
         <p className="anim-fade-up anim-delay-100 text-center text-slate-500 mb-14">Comprehensive dental care under one roof.</p>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className={`grid gap-6 ${isType3 ? "md:grid-cols-2" : "sm:grid-cols-2 lg:grid-cols-3"}`}>
           {services.map((s, i) => (
             <div
               key={s.title}
-              className={`group bg-white border border-slate-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 anim-zoom-in anim-delay-${Math.min((i + 1) * 100, 600)}`}
+              className={`group bg-white border border-slate-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 anim-zoom-in anim-delay-${Math.min((i + 1) * 100, 600)} ${isType3 ? "flex items-center p-4" : ""}`}
               style={{ borderRadius: "var(--radius-card)" }}
             >
-              <div className="relative h-48 overflow-hidden" style={{ borderRadius: "var(--radius-card) var(--radius-card) 0 0" }}>
+              <div className={`relative overflow-hidden ${isType3 ? "w-24 h-24 flex-shrink-0" : "h-48"}`} style={{ borderRadius: isType3 ? "1rem" : "var(--radius-card) var(--radius-card) 0 0" }}>
                 <img src={s.image} alt={s.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div className="absolute top-4 left-4 w-10 h-10 rounded-xl flex items-center justify-center bg-white/90 backdrop-blur shadow-sm">
-                  <s.icon className="text-xl" style={{ color: "var(--primary)" }} />
-                </div>
+                {!isType3 && (
+                  <div className="absolute top-4 left-4 w-10 h-10 rounded-xl flex items-center justify-center bg-white/90 backdrop-blur shadow-sm">
+                    <s.icon className="text-xl" style={{ color: "var(--primary)" }} />
+                  </div>
+                )}
               </div>
-              <div className="p-8">
-                <h3 className="font-semibold text-lg mb-2" style={{ color: "var(--text-main)", fontFamily: "var(--font-heading)" }}>
-                  {s.title}
-                </h3>
+              <div className={isType3 ? "pl-6" : "p-8"}>
+                <div className="flex items-center gap-3 mb-2">
+                  {isType3 && <s.icon className="text-xl" style={{ color: "var(--primary)" }} />}
+                  <h3 className="font-semibold text-lg" style={{ color: "var(--text-main)", fontFamily: "var(--font-heading)" }}>
+                    {s.title}
+                  </h3>
+                </div>
                 <p className="text-slate-500 text-sm leading-relaxed">{s.desc}</p>
               </div>
             </div>

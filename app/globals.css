@@ -70,6 +70,11 @@ h1, h2, h3, h4, h5, h6 {
   100% { transform: translateY(0px); }
 }
 
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 .anim-fade-up        { animation: fadeInUp  0.7s ease-out both; }
 .anim-fade-in        { animation: fadeIn    0.6s ease-out both; }
 .anim-scale-in       { animation: scaleIn   0.6s ease-out both; }
@@ -78,6 +83,11 @@ h1, h2, h3, h4, h5, h6 {
 .anim-zoom-in        { animation: zoomIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
 .anim-bounce-in      { animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) both; }
 .anim-float          { animation: float 3s ease-in-out infinite; }
+
+.animate-marquee-infinite {
+  animation: marquee 25s linear infinite;
+  width: max-content;
+}
 
 .anim-delay-100 { animation-delay: 0.1s; }
 .anim-delay-200 { animation-delay: 0.2s; }

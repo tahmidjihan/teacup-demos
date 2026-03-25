@@ -25,6 +25,7 @@ import FaqSection from "./sections/FaqSection";
 import InsuranceSection from "./sections/InsuranceSection";
 import ProcessSection from "./sections/ProcessSection";
 import WhyChooseUsSection from "./sections/WhyChooseUsSection";
+import TestimonialsSwiper from "./sections/TestimonialsSwiper";
 
 interface Props {
   type: string;
@@ -59,6 +60,7 @@ const sectionMap: Record<string, ComponentType<SectionProps>> = {
   insurance_section: InsuranceSection,
   process_section: ProcessSection,
   why_choose_us: WhyChooseUsSection,
+  testimonials_swiper: TestimonialsSwiper,
 };
 
 export default function DynamicSection({ type, businessName, niche, designType }: Props) {
