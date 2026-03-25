@@ -1,0 +1,154 @@
+{
+  "dentists": {
+    "hero": {
+      "tagline": "✦ Accepting New Patients",
+      "headline": "Your Smile, Our <span style='color: var(--primary)'>Priority</span>",
+      "description": "At {businessName}, we combine gentle care with modern dentistry to give you the healthy, beautiful smile you deserve.",
+      "cta1": "Book an Appointment",
+      "cta2": "Our Services"
+    },
+    "services": {
+      "headline": "Our Dental Services",
+      "description": "Comprehensive care for the whole family.",
+      "items": [
+        { "title": "Teeth Cleaning", "desc": "Professional cleaning to keep your smile bright and healthy." },
+        { "title": "Dental Implants", "desc": "Permanent tooth replacement that looks and feels natural." },
+        { "title": "Teeth Whitening", "desc": "Brighten your smile up to 8 shades in one visit." },
+        { "title": "Orthodontics", "desc": "Clear aligners and braces to straighten your smile." },
+        { "title": "Gum Treatment", "desc": "Advanced periodontal care to protect your gum health." },
+        { "title": "Sedation Dentistry", "desc": "Anxiety-free dental care for a comfortable experience." }
+      ]
+    },
+    "testimonials": {
+      "tagline": "Patient Stories",
+      "headline": "What Our Patients Say",
+      "description": "Over 500 five-star reviews and counting.",
+      "items": [
+        { "name": "Sarah M.", "role": "Patient since 2021", "text": "Absolutely incredible experience. The team made me feel at ease from the moment I walked in." },
+        { "name": "James T.", "role": "Patient since 2020", "text": "Best dental practice I've ever been to. Professional, thorough, and genuinely caring staff." },
+        { "name": "Rachel K.", "role": "Patient since 2022", "text": "My smile transformation was beyond what I imagined. I can't stop smiling now — truly life-changing!" }
+      ]
+    },
+    "trust": [
+      { "label": "500+ Five-Star Reviews" },
+      { "label": "Board Certified Experts" },
+      { "label": "All Insurances Accepted" },
+      { "label": "Same-Day Appointments" }
+    ],
+    "footer": "Delivering expert dental care with compassion and cutting-edge technology."
+  },
+  "barbers": {
+    "hero": {
+      "tagline": "✦ Now Open for Bookings",
+      "headline": "Sharp Cuts, <span style='color: var(--primary)'>Classic Style</span>",
+      "description": "At {businessName}, we provide premium grooming services that leave you looking and feeling your best. Experience the art of the cut.",
+      "cta1": "Book a Chair",
+      "cta2": "View Styles"
+    },
+    "services": {
+      "headline": "Grooming Services",
+      "description": "From classic cuts to modern fades.",
+      "items": [
+        { "title": "Haircut & Style", "desc": "Precision cuts tailored to your head shape and hair type." },
+        { "title": "Beard Trim", "desc": "Sculpting and lining to keep your facial hair looking sharp." },
+        { "title": "Hot Towel Shave", "desc": "The ultimate relaxation with a traditional straight razor shave." },
+        { "title": "Head Shave", "desc": "Smooth, clean finish with moisturizing aftercare." },
+        { "title": "Hair Coloring", "desc": "Natural-looking gray coverage or bold new colors." },
+        { "title": "Facial Treatments", "desc": "Deep cleaning and hydration for the modern man." }
+      ]
+    },
+    "testimonials": {
+      "tagline": "Client Reviews",
+      "headline": "What Our Clients Say",
+      "description": "The sharpest reviews in town.",
+      "items": [
+        { "name": "David L.", "role": "Client since 2021", "text": "Best haircut I've ever had. The attention to detail is unmatched." },
+        { "name": "Mark R.", "role": "Client since 2020", "text": "Great atmosphere and even better service. I've found my regular barber." },
+        { "name": "Chris B.", "role": "Client since 2022", "text": "The hot towel shave is a game changer. Pure relaxation." }
+      ]
+    },
+    "trust": [
+      { "label": "Walk-ins Welcome" },
+      { "label": "Expert Barbers" },
+      { "label": "Premium Products" },
+      { "label": "Classic Atmosphere" }
+    ],
+    "footer": "Sharp cuts and premium grooming since 2015. Your neighborhood favorite."
+  },
+  "cafes": {
+    "hero": {
+      "tagline": "✦ Freshly Brewed Daily",
+      "headline": "Craft Coffee, <span style='color: var(--primary)'>Community Soul</span>",
+      "description": "At {businessName}, we roast our beans in-house to bring you the perfect cup every single morning. Come for the coffee, stay for the vibe.",
+      "cta1": "Order Now",
+      "cta2": "Our Menu"
+    },
+    "services": {
+      "headline": "What's Brewing",
+      "description": "Expertly crafted drinks and artisan snacks.",
+      "items": [
+        { "title": "Espresso Drinks", "desc": "From silky lattes to bold double shots." },
+        { "title": "Pour Over", "desc": "Single-origin beans brewed to perfection." },
+        { "title": "Artisan Pastries", "desc": "Baked fresh every morning in our kitchen." },
+        { "title": "Breakfast Bowls", "desc": "Healthy starts with seasonal ingredients." },
+        { "title": "Loose Leaf Tea", "desc": "Premium teas from around the world." },
+        { "title": "Seasonal Specials", "desc": "Limited time flavors you can't miss." }
+      ]
+    },
+    "testimonials": {
+      "tagline": "Coffee Lovers",
+      "headline": "Community Buzz",
+      "description": "The best spot in the neighborhood.",
+      "items": [
+        { "name": "Emily R.", "role": "Regular since 2021", "text": "My favorite morning ritual. The atmosphere is just perfect for getting work done." },
+        { "name": "Tom H.", "role": "Regular since 2019", "text": "The best oat milk latte in the city, hands down. And the staff are lovely." },
+        { "name": "Jessica W.", "role": "Regular since 2022", "text": "A hidden gem. Their seasonal specials are always incredibly creative." }
+      ]
+    },
+    "trust": [
+      { "label": "Ethically Sourced" },
+      { "label": "Roasted In-House" },
+      { "label": "Free High-Speed Wi-Fi" },
+      { "label": "Pet Friendly" }
+    ],
+    "footer": "Crafting the perfect coffee experience, one cup at a time. Join our community."
+  },
+  "generic": {
+    "hero": {
+      "tagline": "✦ Professional & Reliable",
+      "headline": "Modern Solutions for <span style='color: var(--primary)'>Your Needs</span>",
+      "description": "At {businessName}, we deliver top-quality services tailored to you. Discover why we're the trusted choice in our field.",
+      "cta1": "Get Started",
+      "cta2": "Learn More"
+    },
+    "services": {
+      "headline": "What We Offer",
+      "description": "Expert solutions for every challenge.",
+      "items": [
+        { "title": "Consultation", "desc": "Expert advice to help you make the right decisions." },
+        { "title": "Implementation", "desc": "Full-service execution of your project from start to finish." },
+        { "title": "Support", "desc": "Ongoing assistance to ensure your continued success." },
+        { "title": "Maintenance", "desc": "Regular check-ups to keep everything running smoothly." },
+        { "title": "Training", "desc": "Empowering your team with the skills they need." },
+        { "title": "Optimization", "desc": "Improving efficiency and performance across the board." }
+      ]
+    },
+    "testimonials": {
+      "tagline": "Client Success",
+      "headline": "What Our Clients Say",
+      "description": "Trusted by professionals worldwide.",
+      "items": [
+        { "name": "Sarah M.", "role": "Client since 2021", "text": "Absolutely incredible experience. The team made me feel at ease from the moment I started." },
+        { "name": "James T.", "role": "Client since 2020", "text": "Best service I've ever experienced. Professional, thorough, and genuinely caring staff." },
+        { "name": "Rachel K.", "role": "Client since 2022", "text": "The transformation was beyond what I imagined. Truly life-changing results!" }
+      ]
+    },
+    "trust": [
+      { "label": "Global Reach" },
+      { "label": "Expert Support" },
+      { "label": "Secure Solutions" },
+      { "label": "Trusted Worldwide" }
+    ],
+    "footer": "Professional solutions tailored to your unique business needs."
+  }
+}

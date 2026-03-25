@@ -5,6 +5,7 @@ import references from "@/data/references.json";
 import DynamicSection from "@/components/DynamicSection";
 import HoldMyTeaWidget from "@/components/HoldMyTeaWidget";
 import type { Metadata } from "next";
+import AnimatedSection from "@/components/AnimatedSection";
 
 interface PageProps {
   params: Promise<{ niche: string }>;
@@ -14,6 +15,20 @@ interface PageProps {
     typography?: string;
     type?: string;
   }>;
+}
+
+interface DesignConfig {
+  style: string;
+  ref?: string;
+  layout: string[];
+}
+
+interface NicheDesignData {
+  [key: string]: DesignConfig;
+}
+
+interface ReferencesData {
+  [key: string]: NicheDesignData;
 }
 
 export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
@@ -36,11 +51,9 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
   const typoId = Number(sp.typography) || 1;
   const typeId = sp.type || "1";
 
-  const nicheData = references[niche as keyof typeof references];
-  const designConfig = nicheData
-    ? (nicheData[`type_${typeId}` as keyof typeof nicheData] ||
-       nicheData["type_1"]) as { style: string; ref: string; layout: string[] }
-    : references.dentists.type_1 as { style: string; ref: string; layout: string[] };
+  const allReferences = references as unknown as ReferencesData;
+  const nicheData = allReferences[niche] || allReferences.dentists;
+  const designConfig = nicheData[`type_${typeId}`] || nicheData["type_1"];
 
   const activeTheme = themes.find((t) => t.id === themeId) || themes[0];
   const activeTypo = typographies.find((t) => t.id === typoId) || typographies[0];
@@ -62,7 +75,9 @@ export default async function DemoPage({ params, searchParams }: PageProps) {
   return (
     <div style={styleVariables} className="min-h-screen">
       {designConfig.layout.map((section: string) => (
-        <DynamicSection key={section} type={section} businessName={name} niche={niche} designType={typeId} />
+        <AnimatedSection key={section}>
+          <DynamicSection type={section} businessName={name} niche={niche} designType={typeId} />
+        </AnimatedSection>
       ))}
       <HoldMyTeaWidget businessName={name} />
     </div>

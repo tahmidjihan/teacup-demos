@@ -1,40 +1,97 @@
 import React from "react";
 import images from "@/data/images.json";
-import { ImagesData, SectionProps } from "@/types";
+import content from "@/data/content.json";
+import { ImagesData, SectionProps, AllContent } from "@/types";
 
-export default function HeroWarm({ businessName, niche, designType }: SectionProps) {
+export default function HeroWarm({ businessName, niche }: SectionProps) {
   const imagesTyped = images as ImagesData;
   const nicheImages = imagesTyped[niche]?.hero || imagesTyped.dentists.hero;
   const heroImage = nicheImages.warm;
   const doctorImage = imagesTyped[niche]?.doctor || imagesTyped.dentists.doctor;
-  void designType;
+  
+  const contentTyped = content as unknown as AllContent;
+  const nicheContent = contentTyped[niche]?.hero || contentTyped.generic.hero;
 
   return (
-    <section id="home" className="py-24 lg:py-36 px-6" style={{ backgroundColor: "var(--secondary)" }}>
-      <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-        <div className="anim-fade-right">
-          <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight" style={{ color: "var(--text-main)", fontFamily: "var(--font-heading)" }}>
-            A Warmer Way to <span style={{ color: "var(--primary)" }}>Smile.</span>
-          </h1>
-          <p className="text-lg text-slate-500 mb-10 leading-relaxed max-w-lg">
-            At {businessName}, we&apos;ve designed our practice to feel like home. Relaxed, gentle, and entirely focused on you.
-          </p>
-          <div className="flex gap-4">
-            <a href="#contact" className="text-white px-8 py-4 font-bold transition-all hover:scale-105" style={{ backgroundColor: "var(--primary)", borderRadius: "var(--radius-pill)" }}>
-              Meet Our Team
-            </a>
-          </div>
-        </div>
-        <div className="anim-fade-left relative">
-          <div className="relative z-10 rounded-card overflow-hidden shadow-xl border-8 border-white" style={{ borderRadius: "var(--radius-card)" }}>
-            <img
-              src={heroImage}
-              alt="Comfortable office"
-              className="w-full h-[450px] object-cover"
+    <section 
+      id="home" 
+      className="relative py-24 lg:py-40 px-6 overflow-hidden" 
+      style={{ backgroundColor: "#f8fafc" }}
+    >
+      {/* Soft medical/clean background pattern */}
+      <div className="absolute inset-0 opacity-[0.03]" 
+        style={{ 
+          backgroundImage: "linear-gradient(var(--primary) 1px, transparent 1px), linear-gradient(90deg, var(--primary) 1px, transparent 1px)",
+          backgroundSize: "60px 60px"
+        }} 
+      />
+      
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+          <div className="anim-fade-right lg:w-1/2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-primary/10 text-primary text-xs font-bold mb-6">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              {nicheContent.tagline}
+            </div>
+            
+            <h1 
+              className="text-5xl lg:text-7xl font-semibold mb-8 leading-[1.15]" 
+              style={{ color: "var(--text-main)", fontFamily: "var(--font-heading)" }}
+              dangerouslySetInnerHTML={{ __html: nicheContent.headline }}
             />
+            
+            <p className="text-xl text-slate-500 mb-10 leading-relaxed max-w-xl">
+              {nicheContent.description.replace("{businessName}", businessName)}
+            </p>
+            
+            <div className="flex flex-wrap gap-4">
+              <a 
+                href="#contact" 
+                className="text-white px-10 py-4 font-bold transition-all hover:bg-opacity-90 shadow-md hover:shadow-lg" 
+                style={{ backgroundColor: "var(--primary)", borderRadius: "0.5rem" }}
+              >
+                {nicheContent.cta1}
+              </a>
+              <div className="flex items-center gap-4 pl-4 border-l border-slate-200">
+                <div className="flex -space-x-3">
+                  {[1,2,3].map(i => (
+                    <div key={i} className="w-10 h-10 rounded-full border-2 border-white overflow-hidden bg-slate-100">
+                      <img src={`https://i.pravatar.cc/100?img=${i+10}`} alt="Patient" />
+                    </div>
+                  ))}
+                </div>
+                <div className="text-sm font-medium text-slate-500">
+                  <span className="text-slate-900 font-bold">4.9/5</span> from 2k+ patients
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-full border-4 border-white shadow-lg overflow-hidden z-20 anim-float">
-            <img src={doctorImage} alt="Doctor" className="w-full h-full object-cover" />
+          
+          <div className="anim-fade-left lg:w-1/2 relative">
+            <div className="relative z-10 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-primary/10 border-[12px] border-white">
+              <img
+                src={heroImage}
+                alt="Professional environment"
+                className="w-full h-[500px] object-cover"
+              />
+            </div>
+            
+            {/* Floating expert card */}
+            <div className="absolute -bottom-10 -right-10 bg-white p-6 rounded-2xl shadow-xl z-20 flex items-center gap-4 anim-float border border-slate-50">
+              <div className="w-16 h-16 rounded-xl overflow-hidden shadow-inner">
+                <img src={doctorImage} alt="Professional" className="w-full h-full object-cover" />
+              </div>
+              <div>
+                <div className="text-sm font-bold text-slate-900">Dr. Alex Rivera</div>
+                <div className="text-xs text-primary font-medium">Chief Medical Officer</div>
+              </div>
+            </div>
+            
+            {/* Decorative circles */}
+            <div className="absolute -top-10 -left-10 w-32 h-32 bg-primary/5 rounded-full blur-2xl" />
           </div>
         </div>
       </div>
