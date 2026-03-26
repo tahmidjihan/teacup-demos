@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import images from "@/data/images.json";
 import { ImagesData, SectionProps } from "@/types";
 
@@ -10,7 +11,7 @@ const teamMembers = [
 
 export default function TeamSection({ businessName, niche, designType }: SectionProps) {
   const imagesTyped = images as ImagesData;
-  const teamImages = imagesTyped[niche]?.team || imagesTyped.dentists.team;
+  const teamImages = imagesTyped[niche]?.team || imagesTyped.dentists.team || [];
   
   // Dynamic offset based on designType
   const offset = Number(designType) % 2 === 0 ? 0 : 1;
@@ -28,20 +29,30 @@ export default function TeamSection({ businessName, niche, designType }: Section
           </p>
         </div>
         <div className="grid md:grid-cols-3 gap-8">
-          {teamMembers.map((member, i) => (
-            <div key={member.name} className={`anim-scale-in anim-delay-${(i + 1) * 200} group bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500`} style={{ borderRadius: "var(--radius-card)" }}>
-              <div className="relative h-80 overflow-hidden" style={{ borderRadius: "var(--radius-card) var(--radius-card) 0 0" }}>
-                <img src={teamImages[(i + offset) % teamImages.length]} alt={member.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                  <p className="text-white text-sm italic">&quot;{member.bio}&quot;</p>
+          {teamMembers.map((member, i) => {
+            const imgSrc = teamImages.length > 0 ? teamImages[(i + offset) % teamImages.length] : "";
+            return (
+              <div key={member.name} className={`anim-scale-in anim-delay-${(i + 1) * 200} group bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500`} style={{ borderRadius: "var(--radius-card)" }}>
+                <div className="relative h-80 overflow-hidden" style={{ borderRadius: "var(--radius-card) var(--radius-card) 0 0" }}>
+                  {imgSrc && (
+                    <Image 
+                      src={imgSrc} 
+                      alt={member.name} 
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-700" 
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                    <p className="text-white text-sm italic">&quot;{member.bio}&quot;</p>
+                  </div>
+                </div>
+                <div className="p-8 text-center">
+                  <h3 className="text-xl font-bold mb-1" style={{ color: "var(--text-main)", fontFamily: "var(--font-heading)" }}>{member.name}</h3>
+                  <p className="text-sm font-semibold mb-4" style={{ color: "var(--primary)" }}>{member.role}</p>
                 </div>
               </div>
-              <div className="p-8 text-center">
-                <h3 className="text-xl font-bold mb-1" style={{ color: "var(--text-main)", fontFamily: "var(--font-heading)" }}>{member.name}</h3>
-                <p className="text-sm font-semibold mb-4" style={{ color: "var(--primary)" }}>{member.role}</p>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

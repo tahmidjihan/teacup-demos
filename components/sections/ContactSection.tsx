@@ -1,11 +1,12 @@
 import React from "react";
+import Image from "next/image";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaClock } from "react-icons/fa";
 import images from "@/data/images.json";
 import { ImagesData, SectionProps } from "@/types";
 
 export default function ContactSection({ businessName, niche, designType }: SectionProps) {
   const imagesTyped = images as ImagesData;
-  const contactImage = imagesTyped[niche]?.contact || imagesTyped.dentists.contact;
+  const contactImage = imagesTyped[niche]?.contact || imagesTyped.dentists.contact || "";
   void designType;
 
   return (
@@ -39,11 +40,14 @@ export default function ContactSection({ businessName, niche, designType }: Sect
             </button>
           </div>
           <div className="relative h-64 lg:h-auto">
-            <img
-              src={contactImage}
-              alt="Our office"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
+            {contactImage && (
+              <Image
+                src={contactImage}
+                alt="Our office"
+                fill
+                className="object-cover"
+              />
+            )}
             <div className="absolute inset-0" style={{ background: "linear-gradient(to right, white, transparent)" }} />
           </div>
         </div>

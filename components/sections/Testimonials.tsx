@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { FaStar, FaQuoteLeft } from "react-icons/fa";
 import images from "@/data/images.json";
 import content from "@/data/content.json";
@@ -25,28 +26,40 @@ export default function Testimonials({ niche, designType }: SectionProps) {
         </h2>
         <p className="anim-fade-up anim-delay-100 text-center text-slate-500 mb-14">{nicheContent.description}</p>
         <div className={`grid gap-6 ${isType3 ? "md:grid-cols-2" : "md:grid-cols-3"}`}>
-          {nicheContent.items.map((r, i) => (
-            <div
-              key={r.name}
-              className={`anim-fade-up anim-delay-${(i + 1) * 100} bg-white border border-slate-100 shadow-sm p-8 flex flex-col hover:shadow-md transition-shadow ${isType3 && i === 2 ? "md:col-span-2" : ""}`}
-              style={{ borderRadius: "var(--radius-card)" }}
-            >
-              <FaQuoteLeft className="text-2xl mb-4 opacity-20" style={{ color: "var(--primary)" }} />
-              <div className="flex gap-1 mb-4">
-                {Array.from({ length: 5 }).map((_, j) => (
-                  <FaStar key={j} className="text-amber-400 text-sm" />
-                ))}
-              </div>
-              <p className="text-slate-600 text-sm leading-relaxed flex-1 mb-6">&quot;{r.text}&quot;</p>
-              <div className="flex items-center gap-3">
-                <img src={displayAvatars[i % displayAvatars.length]} alt={r.name} className="w-10 h-10 rounded-full object-cover" />
-                <div>
-                  <p className="font-semibold text-sm" style={{ color: "var(--text-main)" }}>{r.name}</p>
-                  <p className="text-xs text-slate-400">{r.role}</p>
+          {nicheContent.items.map((r, i) => {
+            const avatarSrc = displayAvatars.length > 0 ? displayAvatars[i % displayAvatars.length] : "";
+            return (
+              <div
+                key={r.name}
+                className={`anim-fade-up anim-delay-${(i + 1) * 100} bg-white border border-slate-100 shadow-sm p-8 flex flex-col hover:shadow-md transition-shadow ${isType3 && i === 2 ? "md:col-span-2" : ""}`}
+                style={{ borderRadius: "var(--radius-card)" }}
+              >
+                <FaQuoteLeft className="text-2xl mb-4 opacity-20" style={{ color: "var(--primary)" }} />
+                <div className="flex gap-1 mb-4">
+                  {Array.from({ length: 5 }).map((_, j) => (
+                    <FaStar key={j} className="text-amber-400 text-sm" />
+                  ))}
+                </div>
+                <p className="text-slate-600 text-sm leading-relaxed flex-1 mb-6">&quot;{r.text}&quot;</p>
+                <div className="flex items-center gap-3">
+                  {avatarSrc && (
+                    <div className="relative w-10 h-10 flex-shrink-0">
+                      <Image 
+                        src={avatarSrc} 
+                        alt={r.name} 
+                        fill
+                        className="rounded-full object-cover" 
+                      />
+                    </div>
+                  )}
+                  <div>
+                    <p className="font-semibold text-sm" style={{ color: "var(--text-main)" }}>{r.name}</p>
+                    <p className="text-xs text-slate-400">{r.role}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

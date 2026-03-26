@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import images from "@/data/images.json";
 import { ImagesData, SectionProps } from "@/types";
 import { FaShieldAlt, FaCreditCard, FaStethoscope } from "react-icons/fa";
@@ -11,7 +12,7 @@ const insuranceFeatures = [
 
 export default function InsuranceSection({ businessName, niche, designType }: SectionProps) {
   const imagesTyped = images as ImagesData;
-  const insuranceImage = imagesTyped[niche]?.insurance || imagesTyped.dentists.insurance;
+  const insuranceImage = imagesTyped[niche]?.insurance || imagesTyped.dentists.insurance || "";
   void designType;
   void businessName;
 
@@ -19,8 +20,15 @@ export default function InsuranceSection({ businessName, niche, designType }: Se
     <section id="insurance" className="py-24 px-6" style={{ backgroundColor: "var(--secondary)" }}>
       <div className="max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center bg-white shadow-2xl overflow-hidden" style={{ borderRadius: "var(--radius-card)" }}>
-          <div className="relative h-[400px] lg:h-full">
-            <img src={insuranceImage} alt="Insurance Support" className="absolute inset-0 w-full h-full object-cover" />
+          <div className="relative h-[400px] lg:h-full lg:min-h-[500px]">
+            {insuranceImage && (
+              <Image 
+                src={insuranceImage} 
+                alt="Insurance Support" 
+                fill
+                className="object-cover" 
+              />
+            )}
             <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
           </div>
           <div className="p-10 lg:p-20">

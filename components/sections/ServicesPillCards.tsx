@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { FaTooth, FaCut, FaCheckCircle, FaStar, FaShieldAlt, FaPlusCircle } from "react-icons/fa";
 import images from "@/data/images.json";
 import content from "@/data/content.json";
@@ -13,7 +14,7 @@ const iconMap: Record<string, IconType[]> = {
 
 export default function ServicesPillCards({ niche, designType }: SectionProps) {
   const imagesTyped = images as ImagesData;
-  const nicheServices = imagesTyped[niche]?.services || imagesTyped.dentists.services;
+  const nicheServices = imagesTyped[niche]?.services || imagesTyped.dentists.services || [];
   
   const contentTyped = content as unknown as AllContent;
   const nicheContent = contentTyped[niche]?.services || contentTyped.generic.services;
@@ -40,7 +41,14 @@ export default function ServicesPillCards({ niche, designType }: SectionProps) {
                 style={{ borderRadius: "var(--radius-card)" }}
               >
                 <div className={`relative overflow-hidden ${isType3 ? "w-24 h-24 flex-shrink-0" : "h-48"}`} style={{ borderRadius: isType3 ? "1rem" : "var(--radius-card) var(--radius-card) 0 0" }}>
-                  {serviceData && <img src={serviceData.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />}
+                  {serviceData && (
+                    <Image 
+                      src={serviceData.image} 
+                      alt={item.title} 
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500" 
+                    />
+                  )}
                   {!isType3 && (
                     <div className="absolute top-4 left-4 w-10 h-10 rounded-xl flex items-center justify-center bg-white/90 backdrop-blur shadow-sm">
                       <Icon className="text-xl" style={{ color: "var(--primary)" }} />

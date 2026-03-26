@@ -1,3 +1,4 @@
+import Image from "next/image";
 import images from "@/data/images.json";
 import content from "@/data/content.json";
 import { ImagesData, SectionProps, AllContent } from "@/types";
@@ -51,12 +52,15 @@ export default function HeroCentered({ businessName, niche }: SectionProps) {
         
         <div className="anim-zoom-in anim-delay-500 relative max-w-5xl mx-auto group">
           <div className="absolute -inset-4 bg-primary/5 rounded-[2rem] blur-2xl group-hover:bg-primary/10 transition-colors duration-500" />
-          <div className="relative rounded-card overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] border-8 border-white" style={{ borderRadius: "var(--radius-card)" }}>
-            <img
-              src={heroImage}
-              alt="Bright modern space"
-              className="w-full h-[300px] lg:h-[550px] object-cover group-hover:scale-105 transition-transform duration-1000"
-            />
+          <div className="relative rounded-card overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] border-8 border-white h-[300px] lg:h-[550px]" style={{ borderRadius: "var(--radius-card)" }}>
+            {heroImage && (
+              <Image
+                src={heroImage}
+                alt="Bright modern space"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-1000"
+              />
+            )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </div>
         </div>

@@ -1,5 +1,6 @@
 'use client'
 import React, { useState } from "react";
+import Image from "next/image";
 import images from "@/data/images.json";
 import { ImagesData, SectionProps } from "@/types";
 import { FaChevronDown } from "react-icons/fa";
@@ -14,7 +15,7 @@ const faqs = [
 export default function FaqSection({ businessName, niche, designType }: SectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const imagesTyped = images as ImagesData;
-  const faqImage = imagesTyped[niche]?.faq || imagesTyped.dentists.faq;
+  const faqImage = imagesTyped[niche]?.faq || imagesTyped.dentists.faq || "";
   void designType;
 
   return (
@@ -48,8 +49,15 @@ export default function FaqSection({ businessName, niche, designType }: SectionP
             </div>
           </div>
           <div className="anim-fade-left relative">
-            <div className="relative z-10 rounded-card overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-700" style={{ borderRadius: "var(--radius-card)" }}>
-              <img src={faqImage} alt="FAQ support" className="w-full h-[500px] object-cover" />
+            <div className="relative z-10 rounded-card overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-700 h-[500px]" style={{ borderRadius: "var(--radius-card)" }}>
+              {faqImage && (
+                <Image 
+                  src={faqImage} 
+                  alt="FAQ support" 
+                  fill
+                  className="object-cover" 
+                />
+              )}
             </div>
             <div className="absolute -top-10 -right-10 w-64 h-64 opacity-20 blur-3xl rounded-full" style={{ backgroundColor: "var(--primary)" }} />
           </div>

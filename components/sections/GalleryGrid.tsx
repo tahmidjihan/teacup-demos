@@ -1,10 +1,11 @@
 import React from "react";
+import Image from "next/image";
 import images from "@/data/images.json";
 import { ImagesData, SectionProps } from "@/types";
 
 export default function GalleryGrid({ businessName, niche, designType }: SectionProps) {
   const imagesTyped = images as ImagesData;
-  const nicheImages = imagesTyped[niche]?.gallery || imagesTyped.dentists.gallery;
+  const nicheImages = imagesTyped[niche]?.gallery || imagesTyped.dentists.gallery || [];
   
   // Use designType to reverse or offset gallery items for variety
   const displayImages = designType === "4" ? [...nicheImages].reverse() : nicheImages;
@@ -12,27 +13,27 @@ export default function GalleryGrid({ businessName, niche, designType }: Section
   const items = [
     {
       label: "Smile Makeover",
-      img: displayImages[0],
+      img: displayImages[0] || "",
       span: "col-span-2 lg:col-span-1 row-span-2",
     },
     {
       label: "Veneers",
-      img: displayImages[1],
+      img: displayImages[1] || "",
       span: "",
     },
     {
       label: "Whitening",
-      img: displayImages[2],
+      img: displayImages[2] || "",
       span: "",
     },
     {
       label: "Implants",
-      img: displayImages[3],
+      img: displayImages[3] || "",
       span: "",
     },
     {
       label: "Full Restoration",
-      img: displayImages[4],
+      img: displayImages[4] || "",
       span: "",
     },
   ];
@@ -53,11 +54,14 @@ export default function GalleryGrid({ businessName, niche, designType }: Section
               className={`${item.span} relative overflow-hidden group anim-zoom-in anim-delay-${Math.min((i + 1) * 100, 500)}`}
               style={{ borderRadius: "var(--radius-card)" }}
             >
-              <img
-                src={item.img}
-                alt={item.label}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
+              {item.img && (
+                <Image
+                  src={item.img}
+                  alt={item.label}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              )}
               <div className="absolute inset-0 flex items-end p-5" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%)" }}>
                 <span className="text-white font-semibold text-sm drop-shadow">{item.label}</span>
               </div>

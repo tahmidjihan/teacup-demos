@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import images from "@/data/images.json";
 import content from "@/data/content.json";
 import { ImagesData, SectionProps, AllContent } from "@/types";
@@ -16,11 +17,15 @@ export default function HeroFullHeight({ businessName, niche }: SectionProps) {
     <section id="home" className="relative h-screen flex items-center justify-center text-center px-6 overflow-hidden bg-black">
       {/* Cinematic background with zoom and pan effect */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
-        <img
-          src={heroImage}
-          alt="Luxury setting"
-          className="absolute inset-0 w-full h-full object-cover anim-zoom-out brightness-[0.4]"
-        />
+        {heroImage && (
+          <Image
+            src={heroImage}
+            alt="Luxury setting"
+            fill
+            className="object-cover anim-zoom-out brightness-[0.4]"
+            priority
+          />
+        )}
       </div>
       
       {/* Luxury overlays */}

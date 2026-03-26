@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { FaTooth, FaCut, FaCheckCircle, FaStar, FaShieldAlt, FaPlusCircle } from "react-icons/fa";
 import images from "@/data/images.json";
 import content from "@/data/content.json";
@@ -13,7 +14,7 @@ const iconMap: Record<string, IconType[]> = {
 
 export default function BentoGridServices({ niche }: SectionProps) {
   const imagesTyped = images as ImagesData;
-  const nicheServices = imagesTyped[niche]?.services || imagesTyped.dentists.services;
+  const nicheServices = imagesTyped[niche]?.services || imagesTyped.dentists.services || [];
   
   const contentTyped = content as unknown as AllContent;
   const nicheContent = contentTyped[niche]?.services || contentTyped.generic.services;
@@ -33,7 +34,14 @@ export default function BentoGridServices({ niche }: SectionProps) {
           <div className="anim-scale-in col-span-2 lg:col-span-1 row-span-2 text-white p-8 flex flex-col justify-between relative overflow-hidden group"
             style={{ backgroundColor: "var(--primary)", borderRadius: "var(--radius-card)" }}
           >
-            {s[0] && <img src={s[0].image} className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-110 transition-transform duration-700" alt="Main service" />}
+            {s[0] && (
+              <Image 
+                src={s[0].image} 
+                fill
+                className="absolute inset-0 object-cover opacity-50 group-hover:scale-110 transition-transform duration-700" 
+                alt="Main service" 
+              />
+            )}
             {React.createElement(icons[0], { className: "text-5xl text-white/60 relative z-10" })}
             <div className="relative z-10">
               <h3 className="font-bold text-2xl mb-2" style={{ fontFamily: "var(--font-heading)" }}>{nicheContent.items[0].title}</h3>
@@ -49,7 +57,14 @@ export default function BentoGridServices({ niche }: SectionProps) {
                 className={`anim-scale-in anim-delay-${(i + 1) * 100} bg-white border border-slate-100 p-6 flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all relative overflow-hidden group`}
                 style={{ borderRadius: "var(--radius-card)" }}
               >
-                {serviceImg && <img src={serviceImg.image} className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-40 transition-opacity duration-500" alt={item.title} />}
+                {serviceImg && (
+                  <Image 
+                    src={serviceImg.image} 
+                    fill
+                    className="absolute inset-0 object-cover opacity-20 group-hover:opacity-40 transition-opacity duration-500" 
+                    alt={item.title} 
+                  />
+                )}
                 <Icon className="text-3xl relative z-10" style={{ color: "var(--primary)" }} />
                 <div className="relative z-10">
                   <h3 className="font-semibold text-base" style={{ color: "var(--text-main)", fontFamily: "var(--font-heading)" }}>{item.title}</h3>

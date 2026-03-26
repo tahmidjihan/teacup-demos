@@ -1,15 +1,23 @@
+import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa";
 import images from "@/data/images.json";
 import { ImagesData, SectionProps } from "@/types";
 
 export default function CtaRibbon({ businessName, niche, designType }: SectionProps) {
   const imagesTyped = images as ImagesData;
-  const ctaImage = imagesTyped[niche]?.cta || imagesTyped.dentists.cta;
+  const ctaImage = imagesTyped[niche]?.cta || imagesTyped.dentists.cta || "";
   void designType;
 
   return (
     <section className="py-20 px-6 text-white text-center relative overflow-hidden" style={{ backgroundColor: "var(--primary)" }}>
-      <img src={ctaImage} className="absolute inset-0 w-full h-full object-cover opacity-20" alt="CTA Background" />
+      {ctaImage && (
+        <Image 
+          src={ctaImage} 
+          fill
+          className="object-cover opacity-20" 
+          alt="CTA Background" 
+        />
+      )}
       <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ background: "radial-gradient(ellipse at 30% 50%, white 0%, transparent 70%)" }} />
       <div className="relative z-10 max-w-3xl mx-auto">
         <h2 className="anim-fade-up text-3xl lg:text-4xl font-bold mb-4" style={{ fontFamily: "var(--font-heading)" }}>

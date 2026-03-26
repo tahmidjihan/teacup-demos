@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { FaCheckCircle } from "react-icons/fa";
 import images from "@/data/images.json";
 import { ImagesData, SectionProps } from "@/types";
@@ -14,12 +15,15 @@ export default function IconFeatureList({ businessName, niche, designType }: Sec
     <section id="features" className="py-24 px-6" style={{ backgroundColor: "var(--secondary)" }}>
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         <div className="anim-fade-right relative h-[500px]">
-          <img
-            src={nicheImage}
-            alt="Clinical Excellence"
-            className="w-full h-full object-cover rounded-card shadow-2xl"
-            style={{ borderRadius: "var(--radius-card)" }}
-          />
+          {nicheImage && (
+            <Image
+              src={nicheImage}
+              alt="Clinical Excellence"
+              fill
+              className="object-cover rounded-card shadow-2xl"
+              style={{ borderRadius: "var(--radius-card)" }}
+            />
+          )}
           <div className="absolute -bottom-6 -right-6 bg-white p-6 shadow-xl anim-scale-in anim-delay-500" style={{ borderRadius: "var(--radius-card)" }}>
             <p className="text-3xl font-bold" style={{ color: "var(--primary)" }}>15+</p>
             <p className="text-xs text-slate-400 uppercase tracking-wider font-semibold">Years Experience</p>

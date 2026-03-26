@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import images from "@/data/images.json";
 import content from "@/data/content.json";
 import { ImagesData, SectionProps, AllContent } from "@/types";
@@ -70,12 +71,15 @@ export default function HeroSplitRight({ businessName, niche }: SectionProps) {
           
           <div className="anim-fade-left relative group">
             <div className="absolute -inset-1 bg-gradient-to-r from-white/20 to-transparent rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-            <div className="relative rounded-2xl overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] transform -rotate-3 group-hover:rotate-0 transition-all duration-700">
-              <img
-                src={heroImage}
-                alt="High impact visual"
-                className="w-full h-[650px] object-cover scale-110 group-hover:scale-100 transition-transform duration-1000"
-              />
+            <div className="relative rounded-2xl overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] transform -rotate-3 group-hover:rotate-0 transition-all duration-700 h-[650px]">
+              {heroImage && (
+                <Image
+                  src={heroImage}
+                  alt="High impact visual"
+                  fill
+                  className="object-cover scale-110 group-hover:scale-100 transition-transform duration-1000"
+                />
+              )}
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/40 to-transparent mix-blend-overlay" />
             </div>
             

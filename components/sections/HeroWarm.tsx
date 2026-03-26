@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import images from "@/data/images.json";
 import content from "@/data/content.json";
 import { ImagesData, SectionProps, AllContent } from "@/types";
@@ -58,8 +59,13 @@ export default function HeroWarm({ businessName, niche }: SectionProps) {
               <div className="flex items-center gap-4 pl-4 border-l border-slate-200">
                 <div className="flex -space-x-3">
                   {[1,2,3].map(i => (
-                    <div key={i} className="w-10 h-10 rounded-full border-2 border-white overflow-hidden bg-slate-100">
-                      <img src={`https://i.pravatar.cc/100?img=${i+10}`} alt="Patient" />
+                    <div key={i} className="relative w-10 h-10 rounded-full border-2 border-white overflow-hidden bg-slate-100">
+                      <Image 
+                        src={`https://i.pravatar.cc/100?img=${i+10}`} 
+                        alt="Patient" 
+                        fill
+                        className="object-cover"
+                      />
                     </div>
                   ))}
                 </div>
@@ -71,18 +77,28 @@ export default function HeroWarm({ businessName, niche }: SectionProps) {
           </div>
           
           <div className="anim-fade-left lg:w-1/2 relative">
-            <div className="relative z-10 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-primary/10 border-[12px] border-white">
-              <img
-                src={heroImage}
-                alt="Professional environment"
-                className="w-full h-[500px] object-cover"
-              />
+            <div className="relative z-10 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-primary/10 border-[12px] border-white h-[500px]">
+              {heroImage && (
+                <Image
+                  src={heroImage}
+                  alt="Professional environment"
+                  fill
+                  className="object-cover"
+                />
+              )}
             </div>
             
             {/* Floating expert card */}
             <div className="absolute -bottom-10 -right-10 bg-white p-6 rounded-2xl shadow-xl z-20 flex items-center gap-4 anim-float border border-slate-50">
-              <div className="w-16 h-16 rounded-xl overflow-hidden shadow-inner">
-                <img src={doctorImage} alt="Professional" className="w-full h-full object-cover" />
+              <div className="relative w-16 h-16 rounded-xl overflow-hidden shadow-inner">
+                {doctorImage && (
+                  <Image 
+                    src={doctorImage} 
+                    alt="Professional" 
+                    fill
+                    className="object-cover" 
+                  />
+                )}
               </div>
               <div>
                 <div className="text-sm font-bold text-slate-900">Dr. Alex Rivera</div>
